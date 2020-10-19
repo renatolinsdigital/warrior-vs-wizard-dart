@@ -1,5 +1,5 @@
 import '../game-elements/character.class.dart';
-import '../helpers/enums.dart';
+import '../enums/game.enums.dart';
 
 class Warrior extends Character {
   String elementIdentifier = 'warrior';

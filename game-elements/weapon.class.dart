@@ -1,4 +1,4 @@
-import '../helpers/enums.dart';
+import '../enums/game.enums.dart';
 
 abstract class Weapon {
   String instanceId;

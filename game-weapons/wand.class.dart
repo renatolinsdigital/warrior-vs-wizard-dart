@@ -1,5 +1,5 @@
 import '../game-elements/weapon.class.dart';
-import '../helpers/enums.dart';
+import '../enums/game.enums.dart';
 
 class Wand extends Weapon {
   String elementIdentifier = 'magical_wand';

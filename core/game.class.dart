@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'dart:io';
-import '../helpers/enums.dart';
+import '../enums/game.enums.dart';
 import '../game-elements/weapon.class.dart';
 import '../game-elements/character.class.dart';
 

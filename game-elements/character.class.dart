@@ -1,5 +1,5 @@
-import '../helpers/calculations.dart';
-import '../helpers/enums.dart';
+import '../helpers/calculations.functions.dart';
+import '../enums/game.enums.dart';
 import 'weapon.class.dart';
 import 'dart:math';
 

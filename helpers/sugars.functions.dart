@@ -1,5 +1,5 @@
 import '../game-elements/character.class.dart';
-import 'game.class.dart';
+import '../core/game.class.dart';
 
 Future<bool> attack(Character firstCharacter, Character secondCharacter) async {
   var isAttackFinished = false;
