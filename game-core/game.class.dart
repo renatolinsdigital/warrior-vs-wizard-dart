@@ -22,8 +22,9 @@ class Game {
 
   // Main methods
 
-  void run() {
+  Future<void> run() async {
     this.status = GameStatus.RUNNING;
+    await Game.writeToBattleLog(this.toString());
   }
 
   void pause() {

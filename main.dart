@@ -9,8 +9,7 @@ import 'game-weapons/wand.class.dart';
 void main() async {
   // Game instance start
   var game = Game();
-  game.run();
-  await Game.writeToBattleLog(game.toString());
+  await game.run();
 
   // generating game world stuff
   game.addWeapon(new Sword('Brave Sword', attackPower: 120));
@@ -23,8 +22,6 @@ void main() async {
   // adding characters to game
   game.addCharacter(new Warrior('Theruk'));
   game.addCharacter(new Wizard('Mancid'));
-
-  await Game.writeToBattleLog(game.charactersToString());
 
   // querying game elements for later interaction
   var firstSwordFound = game.getWeaponsByType(WeaponType.SWORD)[0];
@@ -40,6 +37,8 @@ void main() async {
   wizard.setLevel(1);
   warrior.equipWeapon(firstSwordFound);
   wizard.equipWeapon(firstWandFound);
+
+  await Game.writeToBattleLog(game.charactersToString());
 
   // Action start
   await Game.writeToBattleLog('''
