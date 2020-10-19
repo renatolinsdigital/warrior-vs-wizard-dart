@@ -10,32 +10,24 @@ class Game {
   List<Weapon> weapons = [];
   List<Character> characters = [];
   static File batteLog;
-
-  Game() {
-    final battleLogFileName = 'battle-log.txt';
-    final oldBattleLog = File(battleLogFileName);
-
-    if (oldBattleLog.existsSync()) oldBattleLog.deleteSync();
-
-    batteLog = File(battleLogFileName);
-  }
+  static List<String> currentActionMessages = [];
 
   // Main methods
 
   Future<void> run() async {
-    this.status = GameStatus.RUNNING;
-    await Game.writeToBattleLog(this.toString());
+    status = GameStatus.RUNNING;
+    await Game.writeToBattleLog(toString());
   }
 
   void pause() {
-    this.status = GameStatus.PAUSED;
+    status = GameStatus.PAUSED;
   }
 
   void stop() {
-    this.winnerName = null;
-    this.weapons = [];
-    this.characters = [];
-    this.status = GameStatus.STOPPED;
+    winnerName = null;
+    weapons = [];
+    characters = [];
+    status = GameStatus.STOPPED;
   }
 
   // Battle log
@@ -59,13 +51,13 @@ class Game {
   // Weapons
 
   void addWeapon(Weapon weapon) {
-    if (this.status != GameStatus.RUNNING) {
+    if (status != GameStatus.RUNNING) {
       print('Game is not running');
       return;
     }
     final instanceHashCode = Random().hashCode;
     weapon.instanceId = instanceHashCode.toString();
-    this.weapons.add(weapon);
+    weapons.add(weapon);
   }
 
   List<Weapon> getWeaponsByType(WeaponType type) {
@@ -78,7 +70,7 @@ class Game {
 = GAME WEAPONS =
   ''');
     final List<String> weaponsAsList =
-        this.weapons.map((weapon) => weapon.toString()).toList();
+        weapons.map((weapon) => weapon.toString()).toList();
 
     final String weaponsAsString =
         weaponsAsList.reduce((prev, next) => ('''${prev} ${next}'''));
@@ -88,14 +80,14 @@ class Game {
   // Characters
 
   addCharacter(Character character) {
-    if (this.status != GameStatus.RUNNING) {
+    if (status != GameStatus.RUNNING) {
       print('Game is not running');
       return;
     }
 
     final instanceHashCode = Random().hashCode;
     character.instanceId = instanceHashCode.toString();
-    this.characters.add(character);
+    characters.add(character);
   }
 
   List<Character> getCharactersByClass(CharacterClass charClass) {
@@ -110,19 +102,30 @@ class Game {
 = GAME CHARACTERS =
   ''');
     final List<String> charactersAsList =
-        this.characters.map((char) => char.toString()).toList();
+        characters.map((char) => char.toString()).toList();
 
     final String charactersAsString =
         charactersAsList.reduce((prev, next) => ('''${prev} ${next}'''));
     return logTitle + charactersAsString;
   }
 
-  // Others
+  // Stringifying
 
   String toString() => ('''
 = GAME INFO =
   
-  Status: ${this.status}   
-  Winner: ${this.winnerName ?? 'No winners yet'} 
+  Status: ${status}   
+  Winner: ${winnerName ?? 'No winners yet'} 
   ''');
+
+  // Constructor
+
+  Game() {
+    final battleLogFileName = 'battle-log.txt';
+    final oldBattleLog = File(battleLogFileName);
+
+    if (oldBattleLog.existsSync()) oldBattleLog.deleteSync();
+
+    batteLog = File(battleLogFileName);
+  }
 }

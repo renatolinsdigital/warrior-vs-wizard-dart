@@ -1,27 +1,24 @@
 import '../game-elements/character.class.dart';
 import '../enums/game.enums.dart';
+import '../models/character-class.model.dart';
 
-class Warrior extends Character {
-  String elementIdentifier = 'warrior';
-
-  Warrior(String name) : super(name) {
-    this.elementIdentifier =
-        '${super.elementIdentifier}_${this.elementIdentifier}';
-    this.characterClass = CharacterClass.WARRIOR;
+class Warrior extends Character implements CharacterClassModel {
+  void updateElementIdentifier() {
+    elementIdentifier = '${super.elementIdentifier}_warrior';
   }
 
   @override
   void setLevel(int newLevel) {
-    this.level = newLevel;
+    level = newLevel;
 
-    final warriorHealthAdjustment = (this.level * 5) + 50;
-    this.health = this.baseHealth + warriorHealthAdjustment.truncate();
+    final warriorHealthAdjustment = (level * 5) + 50;
+    health = baseHealth + warriorHealthAdjustment.truncate();
 
-    final warriorStrengthAdjustment = (this.level * 3) + 50;
-    this.strength = this.baseStrength + warriorStrengthAdjustment.truncate();
+    final warriorStrengthAdjustment = (level * 3) + 50;
+    strength = baseStrength + warriorStrengthAdjustment.truncate();
 
-    final warriorWisdomAdjustment = (((this.level * 3) + 50) / 10).truncate();
-    this.wisdom = this.baseWisdom - warriorWisdomAdjustment.truncate();
+    final warriorWisdomAdjustment = (((level * 3) + 50) / 10).truncate();
+    wisdom = baseWisdom - warriorWisdomAdjustment.truncate();
   }
 
   void classSpecialAttack() {
@@ -32,5 +29,10 @@ class Warrior extends Character {
   void unleashUltimate() {
     // has a cooldown
     print('Warrior ultimate attack');
+  }
+
+  Warrior(String name) : super(name) {
+    updateElementIdentifier();
+    characterClass = CharacterClass.WARRIOR;
   }
 }

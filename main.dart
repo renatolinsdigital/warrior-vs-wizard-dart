@@ -3,7 +3,7 @@ import 'character-classes/warrior.class.dart';
 import 'character-classes/wizard.class.dart';
 import 'game-weapons/sword.class.dart';
 import 'game-weapons/wand.class.dart';
-import 'helpers/sugars.functions.dart';
+import 'helpers/sugar.functions.dart';
 import 'enums/game.enums.dart';
 
 void main() async {
@@ -48,5 +48,5 @@ void main() async {
 
   await attack(warrior, wizard);
 
-  //game.logCharacters();
+//  game.logCharacters();
 }

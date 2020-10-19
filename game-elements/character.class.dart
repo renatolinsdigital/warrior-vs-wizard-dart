@@ -1,12 +1,12 @@
+import '../core/game.class.dart';
 import '../helpers/calculations.functions.dart';
 import '../enums/game.enums.dart';
 import 'weapon.class.dart';
 import 'dart:math';
 
-abstract class Character {
+class Character {
   String instanceId;
   String elementIdentifier = 'character';
-  List<String> actionMessages = [];
   CharacterClass characterClass;
   String name;
   bool isUltimateReady = false;
@@ -16,73 +16,61 @@ abstract class Character {
   int health;
   int strength;
   int wisdom;
-  int get baseHealth => ((pow(2, 8 + this.level / 50)).floor() - this.level);
-  int get baseStrength => (10 + ((this.level / 20) * 40)).truncate();
-  int get baseWisdom => (10 + ((this.level / 20) * 40)).truncate();
+  int get baseHealth => ((pow(2, 8 + level / 50)).floor() - level);
+  int get baseStrength => (10 + ((level / 20) * 40)).truncate();
+  int get baseWisdom => (10 + ((level / 20) * 40)).truncate();
 
   void setLevel(int newLevel) {
-    this.level = newLevel;
-    this.health = baseHealth;
-    this.strength = baseStrength;
-    this.wisdom = baseWisdom;
+    level = newLevel;
+    health = baseHealth;
+    strength = baseStrength;
+    wisdom = baseWisdom;
   }
 
-  int getLevel() => this.level;
-
-  void classSpecialAttack();
-
-  void unleashUltimate();
+  int getLevel() => level;
 
   void equipWeapon(Weapon weapon) {
     this.weapon = weapon;
   }
 
   updateUltimateGauge(Character enemyChar) {
-    this.ultimateGauge += 10;
+    ultimateGauge += 10;
     enemyChar.ultimateGauge += 4;
 
-    if (this.ultimateGauge >= 50) {
-      this.ultimateGauge = 50;
-      this.isUltimateReady = true;
-      actionMessages.add('(${this.name}´s ULTIMATE is ready!) \n');
+    if (ultimateGauge >= 50) {
+      ultimateGauge = 50;
+      isUltimateReady = true;
+      Game.currentActionMessages.add('(${name}´s ULTIMATE is ready!) \n');
     }
     if (enemyChar.ultimateGauge >= 50) {
       enemyChar.ultimateGauge = 50;
       enemyChar.isUltimateReady = true;
-      actionMessages.add('(${enemyChar.name}´s ULTIMATE is ready!) \n');
+      Game.currentActionMessages
+          .add('(${enemyChar.name}´s ULTIMATE is ready!) \n');
     }
   }
 
   Future<List<String>> physicalAttack(Character enemyChar) async {
-    actionMessages = [];
-
-    final weaponPowerFactor =
-        this.weapon != null ? (this.weapon.attackPower / 4) : 10.0;
-
-    var attackPower = ((this.strength / 10) *
+    Game.currentActionMessages = [];
+    final weaponPowerFactor = weapon != null ? (weapon.attackPower / 4) : 10.0;
+    var attackPower = ((strength / 10) *
                 (weaponPowerFactor / (enemyChar.level + 10)) *
-                (this.level / 10) +
+                (level / 10) +
             weaponPowerFactor)
         .truncate();
 
     attackPower = applyVariationPercentage(attackPower, 5);
-
     attackPower = attackPower <= 0 ? 1 : attackPower;
 
     final enemyHealthAfterAttack = enemyChar.health - attackPower;
-
     enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
 
-    actionMessages.add(
-        '\n- ${this.name} attacked ${enemyChar.name} with a ${attackPower} physical hit \n');
-
-    // colocar tipo de uma barra de progresso aqui |||||||||| (a cada 10% de reducao
-    // uma barra diminui)
-
+    Game.currentActionMessages.add(
+        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} physical hit \n');
     if (enemyChar.health > 0) {
       updateUltimateGauge(enemyChar);
     } else {
-      actionMessages.add('''
+      Game.currentActionMessages.add('''
   
   ===> K.O!
       
@@ -91,19 +79,17 @@ abstract class Character {
 
     return Future.delayed(
       Duration(milliseconds: 300),
-      () => actionMessages,
+      () => Game.currentActionMessages,
     );
-
-    // return actionMessages; // synchronous
   }
 
   void magicalAttack(Character enemyChar) {
     final weaponMagicPowerFactor =
-        this.weapon != null ? (this.weapon.magicPower / 4) : 10.0;
+        weapon != null ? (weapon.magicPower / 4) : 10.0;
 
-    var magicPower = ((this.wisdom / 10) *
+    var magicPower = ((wisdom / 10) *
                 (weaponMagicPowerFactor / (enemyChar.level + 10)) *
-                (this.level / 10) +
+                (level / 10) +
             weaponMagicPowerFactor)
         .truncate();
     magicPower = magicPower <= 0 ? 1 : magicPower;
@@ -113,7 +99,7 @@ abstract class Character {
     enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
 
     print(
-        '${this.name} attacked ${enemyChar.name} with a ${magicPower} magical hit');
+        '${name} attacked ${enemyChar.name} with a ${magicPower} magical hit');
 
     if (enemyChar.health > 0) {
       updateUltimateGauge(enemyChar);
@@ -124,19 +110,19 @@ abstract class Character {
 
   String toString() => ('''
   
-  Character name: ${this.name}
-  Instance id: ${this.instanceId}
-  Identifier: ${this.elementIdentifier}
-  Class: ${this.characterClass}
-  Level: ${this.level}
-  Health: ${this.health}
-  Strength: ${this.strength}
-  Wisdom: ${this.wisdom}
-  Equipped weapon: ${this.weapon != null ? this.weapon.name : 'none'}
-  Is Ultimate ready: ${this.isUltimateReady ? 'Yes' : 'No'}
+  Character name: ${name}
+  Instance id: ${instanceId}
+  Identifier: ${elementIdentifier}
+  Class: ${characterClass}
+  Level: ${level}
+  Health: ${health}
+  Strength: ${strength}
+  Wisdom: ${wisdom}
+  Equipped weapon: ${weapon != null ? weapon.name : 'none'}
+  Is Ultimate ready: ${isUltimateReady ? 'Yes' : 'No'}
   ''');
 
-  Character(String this.name) {
-    this.setLevel(1);
+  Character(this.name) {
+    setLevel(1);
   }
 }

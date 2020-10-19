@@ -2,13 +2,8 @@ import '../game-elements/weapon.class.dart';
 import '../enums/game.enums.dart';
 
 class Wand extends Weapon {
-  String elementIdentifier = 'magical_wand';
-  Wand(String name, {int magicPower}) : super(name) {
-    this.magicPower = magicPower;
-    this.attackPower = 10;
-    this.type = WeaponType.WAND;
-    this.elementIdentifier =
-        '${super.elementIdentifier}_${this.elementIdentifier}';
+  void updateElementIdentifier() {
+    elementIdentifier = '${super.elementIdentifier}_magical_wand';
   }
 
   @override
@@ -19,8 +14,16 @@ class Wand extends Weapon {
   @override
   String toString() => ('''
   ${super.toString()}
-  Condition: ${this.condition}%
-  Attack power: ${this.attackPower}
-  Magic power: ${this.magicPower}
+  Condition: ${condition}%
+  Attack power: ${attackPower}
+  Magic power: ${magicPower}
   ''');
+
+  Wand(String name, {int magicPower}) : super(name) {
+    updateElementIdentifier();
+    this.name = name;
+    this.magicPower = magicPower;
+    attackPower = 10;
+    type = WeaponType.WAND;
+  }
 }

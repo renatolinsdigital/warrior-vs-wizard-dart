@@ -10,6 +10,19 @@ This project is a mini RPG game simulation made with Dart and some passing for g
 * Have __VS Code__ with the __Code Runner__ plugin installed
 * Open __main.dart__ file and run it with Ctrl + ALT + N
 
+## About the object oriented approach
+
+In order to have a clean and organized structure, many object oriented programming concepts can be seen here, such as:
+
+* Constructors
+* Access modifiers
+* Getters and setters
+* Inheritance
+* Method overriding and polymorphism
+* Class as "interface" (implements)
+* Abstract classes
+* Static methods and fields
+
 ## Features
 
 * Character (abstract Dart class) can be extended to implement any game character class. __Warrior__ and __Wizard__ are already provided
@@ -18,7 +31,7 @@ This project is a mini RPG game simulation made with Dart and some passing for g
 * Characters can have it´s level adjusted, and it will reflect statuses accordingly
 * Allows a two characters fight untill one of them can be considered the winner. A game instance with a battle example is provided
 * Special skills: Character´s class special skills, characters´s ultimate and weapon skills can unleash powerfull attacks. Both of these have a cooldown
-* Important game actions are registered into a log file called __battle-log.txt__
+* Most of game actions are registered into the __battle-log.txt__(handled by Dart IO) file. This is where you can check this project´s outputs
 
 ## More about
 

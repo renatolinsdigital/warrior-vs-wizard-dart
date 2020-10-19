@@ -10,13 +10,16 @@ abstract class Weapon {
   int _condition = 100;
   void set condition(int newCondition) => _condition = newCondition;
   int get condition => _condition;
+
   String toString() => ('''
   
-  Weapon name: ${this.name}
-  Instance id: ${this.instanceId}
-  Identifier: ${this.elementIdentifier}
-  Type: ${this.type}''');
-  Weapon([String this.name = 'Generic Weapon']);
+  Weapon name: ${name}
+  Instance id: ${instanceId}
+  Identifier: ${elementIdentifier}
+  Type: ${type}''');
+  Weapon([String name = 'Generic Weapon']);
 
+  // Weapon´s will need to implement(as if it we have an interface here)
+  void updateElementIdentifier();
   void weaponSpecialSkill();
 }
