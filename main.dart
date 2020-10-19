@@ -1,10 +1,10 @@
-import 'core/game.class.dart';
-import 'character-classes/warrior.class.dart';
-import 'character-classes/wizard.class.dart';
-import 'game-weapons/sword.class.dart';
-import 'game-weapons/wand.class.dart';
-import 'helpers/sugar.functions.dart';
-import 'enums/game.enums.dart';
+import 'src/core/game.class.dart';
+import 'src/character-classes/warrior.class.dart';
+import 'src/character-classes/wizard.class.dart';
+import 'src/game-weapons/sword.class.dart';
+import 'src/game-weapons/wand.class.dart';
+import 'src/helpers/sugar.functions.dart';
+import 'src/enums/game.enums.dart';
 
 void main() async {
   // Game instance start

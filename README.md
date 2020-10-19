@@ -31,7 +31,7 @@ In order to have a clean and organized structure, many object oriented programmi
 * Characters can have it´s level adjusted, and it will reflect statuses accordingly
 * Allows a two characters fight untill one of them can be considered the winner. A game instance with a battle example is provided
 * Special skills: Character´s class special skills, characters´s ultimate and weapon skills can unleash powerfull attacks. Both of these have a cooldown
-* Most of game actions are registered into the __battle-log.txt__(handled by Dart IO) file. This is where you can check this project´s outputs
+* Most of game actions are registered into the [./battle-log.txt] file(Dart IO is used in here). This is where you can check this project´s outputs
 
 ## More about
 
