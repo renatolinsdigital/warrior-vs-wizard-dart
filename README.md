@@ -35,7 +35,7 @@ In order to have a clean and organized structure, many object oriented programmi
 
 ## External libraries
 
-This project uses __@required__ for some named parameters. This annotation comes from Meta 1.2.3, obtained from: [Meta Versions](https://pub.dev/packages/meta/versions)
+This project uses __@required__ for some named parameters. This annotation comes from __Meta v.1.2.3__, obtained from: [Meta versions](https://pub.dev/packages/meta/versions).
 
 ## More about
 
