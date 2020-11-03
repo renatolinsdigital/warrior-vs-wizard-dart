@@ -1,10 +1,10 @@
-import 'src/core/game.class.dart';
-import 'src/character-classes/warrior.class.dart';
-import 'src/character-classes/wizard.class.dart';
-import 'src/game-weapons/sword.class.dart';
-import 'src/game-weapons/wand.class.dart';
-import 'src/helpers/sugar.functions.dart';
-import 'src/enums/game.enums.dart';
+import 'core/game.class.dart';
+import 'character-classes/warrior.class.dart';
+import 'character-classes/wizard.class.dart';
+import 'game-weapons/sword.class.dart';
+import 'game-weapons/wand.class.dart';
+import 'helpers/sugar.functions.dart';
+import 'enums/game.enums.dart';
 
 void main() async {
   // Game instance start
@@ -46,8 +46,8 @@ void main() async {
   ======= GAME ACTION =======
 ''');
 
-  await attack(warrior, wizard, attackType: 'physical');
-  await attack(wizard, warrior, attackType: 'magical');
+  await attack(warrior, wizard, type: 'physical');
+  await attack(wizard, warrior, type: 'magical');
 
 //  game.logCharacters();
 }

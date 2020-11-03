@@ -33,6 +33,10 @@ In order to have a clean and organized structure, many object oriented programmi
 * Special skills: Character´s class special skills, characters´s ultimate and weapon skills can unleash powerfull attacks. Both of these have a cooldown
 * Most of game actions are registered into the [battle-log.txt](https://github.com/renatolinsdigital/warrior-vs-wizard-dart/blob/master/battle-log.txt) file(handled by Dart IO). This is where you can check this project´s outputs
 
+## External libraries
+
+This project uses __@required__ for some named parameters. This annotation comes from Meta 1.2.3, obtained from: [Meta Versions](https://pub.dev/packages/meta/versions)
+
 ## More about
 
 This is an 100% open project, feel free to study, implement, share, use commercially and collaborate at will. If you want to see me developing more projects like this, you can send an incentive as a paypal donation to this e-mail: renato.lins.digital@gmail.com. Happy game coding!

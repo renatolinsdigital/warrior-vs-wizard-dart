@@ -1,7 +1,7 @@
 import '../core/game.class.dart';
-import '../helpers/calculations.functions.dart';
 import '../enums/game.enums.dart';
-import '../core/attack-power-calculator.dart';
+import '../calculators/attack-power.calculator.dart';
+import '../helpers/extractType.dart';
 import 'weapon.class.dart';
 import 'dart:math';
 
@@ -52,7 +52,7 @@ class Character {
   }
 
   Future<List<String>> attackWithWeapon(Character enemyChar,
-      {String attackType}) async {
+      {AttackType attackType}) async {
     Game.currentActionMessages = [];
 
     final attackPower = attackPowerCalculator(
@@ -65,7 +65,7 @@ class Character {
     enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
 
     Game.currentActionMessages.add(
-        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} ${attackType} hit \n');
+        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} ${extractType(attackType)} hit \n');
     if (enemyChar.health > 0) {
       updateUltimateGauge(enemyChar);
     } else {
