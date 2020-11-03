@@ -1,6 +1,7 @@
 import '../core/game.class.dart';
 import '../helpers/calculations.functions.dart';
 import '../enums/game.enums.dart';
+import '../core/attack-power-calculator.dart';
 import 'weapon.class.dart';
 import 'dart:math';
 
@@ -50,23 +51,21 @@ class Character {
     }
   }
 
-  Future<List<String>> physicalAttack(Character enemyChar) async {
+  Future<List<String>> attackWithWeapon(Character enemyChar,
+      {String attackType}) async {
     Game.currentActionMessages = [];
-    final weaponPowerFactor = weapon != null ? (weapon.attackPower / 4) : 10.0;
-    var attackPower = ((strength / 10) *
-                (weaponPowerFactor / (enemyChar.level + 10)) *
-                (level / 10) +
-            weaponPowerFactor)
-        .truncate();
 
-    attackPower = applyVariationPercentage(attackPower, 5);
-    attackPower = attackPower <= 0 ? 1 : attackPower;
+    final attackPower = attackPowerCalculator(
+        weapon: this.weapon,
+        character: this,
+        enemyChar: enemyChar,
+        attackType: attackType);
 
     final enemyHealthAfterAttack = enemyChar.health - attackPower;
     enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
 
     Game.currentActionMessages.add(
-        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} physical hit \n');
+        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} ${attackType} hit \n');
     if (enemyChar.health > 0) {
       updateUltimateGauge(enemyChar);
     } else {
@@ -81,31 +80,6 @@ class Character {
       Duration(milliseconds: 300),
       () => Game.currentActionMessages,
     );
-  }
-
-  void magicalAttack(Character enemyChar) {
-    final weaponMagicPowerFactor =
-        weapon != null ? (weapon.magicPower / 4) : 10.0;
-
-    var magicPower = ((wisdom / 10) *
-                (weaponMagicPowerFactor / (enemyChar.level + 10)) *
-                (level / 10) +
-            weaponMagicPowerFactor)
-        .truncate();
-    magicPower = magicPower <= 0 ? 1 : magicPower;
-
-    final enemyHealthAfterAttack = enemyChar.health - magicPower;
-
-    enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
-
-    print(
-        '${name} attacked ${enemyChar.name} with a ${magicPower} magical hit');
-
-    if (enemyChar.health > 0) {
-      updateUltimateGauge(enemyChar);
-    } else {
-      // game.engGame();
-    }
   }
 
   String toString() => ('''

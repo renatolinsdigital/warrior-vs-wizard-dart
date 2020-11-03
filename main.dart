@@ -13,9 +13,9 @@ void main() async {
 
   // generating game world stuff
   game.addWeapon(new Sword('Brave Sword', attackPower: 120));
-  game.addWeapon(new Sword('Hero Sword', attackPower: 170)); // add skill
+  game.addWeapon(new Sword('Hero Sword', attackPower: 170));
   game.addWeapon(new Wand('Simple Wand', magicPower: 145));
-  game.addWeapon(new Wand('Fire Wand', magicPower: 160)); // add skill
+  game.addWeapon(new Wand('Fire Wand', magicPower: 160));
 
   await Game.writeToBattleLog(game.weaponsToString());
 
@@ -46,7 +46,8 @@ void main() async {
   ======= GAME ACTION =======
 ''');
 
-  await attack(warrior, wizard);
+  await attack(warrior, wizard, attackType: 'physical');
+  await attack(wizard, warrior, attackType: 'magical');
 
 //  game.logCharacters();
 }
