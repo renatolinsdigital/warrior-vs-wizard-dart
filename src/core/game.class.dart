@@ -1,8 +1,10 @@
+/* Core Game functionallities*/
 import 'dart:math';
 import 'dart:io';
 import '../enums/game.enums.dart';
 import '../game-elements/weapon.class.dart';
 import '../game-elements/character.class.dart';
+import '../helpers/extractType.dart';
 
 class Game {
   GameStatus status = GameStatus.STOPPED;
@@ -33,7 +35,10 @@ class Game {
   // Battle log
 
   static Future<File> writeToBattleLog(String text) {
-    return batteLog.writeAsString(text, mode: FileMode.append);
+    return batteLog.writeAsString('''
+    
+    ${text}
+    ''', mode: FileMode.append);
   }
 
   static Future<bool> bulkWriteToBattleLog(List<String> messageList) async {
@@ -48,7 +53,7 @@ class Game {
     );
   }
 
-  // Weapons
+  // Weapons management
 
   void addWeapon(Weapon weapon) {
     if (status != GameStatus.RUNNING) {
@@ -65,10 +70,8 @@ class Game {
   }
 
   String weaponsToString() {
-    const logTitle = ('''
-
-= GAME WEAPONS =
-  ''');
+    const logTitle = ('''= GAME WEAPONS =
+    ''');
     final List<String> weaponsAsList =
         weapons.map((weapon) => weapon.toString()).toList();
 
@@ -77,7 +80,7 @@ class Game {
     return logTitle + weaponsAsString;
   }
 
-  // Characters
+  // Characters management
 
   addCharacter(Character character) {
     if (status != GameStatus.RUNNING) {
@@ -97,10 +100,8 @@ class Game {
   }
 
   String charactersToString() {
-    const logTitle = ('''
-
-= GAME CHARACTERS =
-  ''');
+    const logTitle = ('''= GAME CHARACTERS =
+    ''');
     final List<String> charactersAsList =
         characters.map((char) => char.toString()).toList();
 
@@ -111,12 +112,10 @@ class Game {
 
   // Stringifying
 
-  String toString() => ('''
-= GAME INFO =
-  
-  Status: ${status}   
-  Winner: ${winnerName ?? 'No winners yet'} 
-  ''');
+  String toString() => ('''= GAME INFO =  
+
+  Status: ${extractType(status)}   
+  Winner: ${winnerName ?? 'No winners yet'}''');
 
   // Constructor
 

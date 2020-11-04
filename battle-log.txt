@@ -1,57 +1,69 @@
-= GAME INFO =
-  
-  Status: GameStatus.RUNNING   
-  Winner: No winners yet 
-  
-= GAME WEAPONS =
-      
-  Weapon name: Brave Sword
-  Instance id: 397243162
-  Identifier: weapon_sharp_sword
-  Type: WeaponType.SWORD
+    
+    = GAME INFO =  
+
+  Status: running   
+  Winner: No winners yet
+        
+    = GAME WEAPONS =
+        
+  Weapon name: Simple Sword
+  Instance id: 177673871
+  Identifier: weapon_sword
+  Type: sword
   Condition: 100%
   Attack power: 120
+  Magic power: 0
+  Special skill: none
+  Special skill power: 0
        
   Weapon name: Hero Sword
-  Instance id: 631376936
-  Identifier: weapon_sharp_sword
-  Type: WeaponType.SWORD
+  Instance id: 313474952
+  Identifier: weapon_sword
+  Type: sword
   Condition: 100%
   Attack power: 170
+  Magic power: 0
+  Special skill: Cutting blow
+  Special skill power: 185
        
   Weapon name: Simple Wand
-  Instance id: 982431541
-  Identifier: weapon_magical_wand
-  Type: WeaponType.WAND
+  Instance id: 451828965
+  Identifier: weapon_wand
+  Type: wand
   Condition: 100%
   Attack power: 10
-  Magic power: 145
-       
+  Magic power: 135
+  Special skill: none
+  Special skill power: 0
+     
   Weapon name: Fire Wand
-  Instance id: 719781476
-  Identifier: weapon_magical_wand
-  Type: WeaponType.WAND
+  Instance id: 443178703
+  Identifier: weapon_wand
+  Type: wand
   Condition: 100%
   Attack power: 10
   Magic power: 160
-  
-= GAME CHARACTERS =
+  Special skill: Burst
+  Special skill power: 170
+
+        
+    = GAME CHARACTERS =
     
   Character name: Theruk
-  Instance id: 960642917
+  Instance id: 565428144
   Identifier: character_warrior
-  Class: CharacterClass.WARRIOR
+  Class: warrior
   Level: 1
   Health: 313
   Strength: 65
   Wisdom: 7
-  Equipped weapon: Brave Sword
+  Equipped weapon: Simple Sword
   Is Ultimate ready: No
-     
+   
   Character name: Mancid
-  Instance id: 589187693
+  Instance id: 602271040
   Identifier: character_warrior
-  Class: CharacterClass.WIZARD
+  Class: wizard
   Level: 1
   Health: 308
   Strength: 7
@@ -59,8 +71,22 @@
   Equipped weapon: Simple Wand
   Is Ultimate ready: No
   
-  ======= GAME ACTION =======
-
-- Theruk attacked Mancid with a 30 physical hit 
-
-- Mancid attacked Theruk with a 39 magical hit 
+        
+    ======= GAME ACTION =======
+        
+    - Theruk attacked Mancid with a 30 physical hit
+        
+    - Mancid attacked Theruk with a 34 magical hit
+        
+    - Theruk attacked Mancid with a 30 physical hit
+        
+    - Mancid attacked Theruk with a 36 magical hit
+        
+    - Theruk equipped Hero Sword
+        
+    - Mancid equipped Fire Wand
+        
+    - Theruk attacked Mancid with a 46 weapon special hit
+        
+    - Theruk attacked Mancid with a 50 weapon special hit
+    

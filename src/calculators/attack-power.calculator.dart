@@ -1,9 +1,11 @@
+/* Calculations for attacking based on: attack type, weapon (and it´s attributes) and characters levels.*/
 import '../enums/game.enums.dart';
 import '../game-elements/character.class.dart';
 import '../game-elements/weapon.class.dart';
 import 'apply-variation-percentage.calculator.dart';
 import '../../lib_packages/meta-1.2.3/lib/meta.dart';
 import '../models/power-calculation-values.model.dart';
+import 'dart:math';
 
 int attackPowerCalculator(
     {@required Weapon weapon,
@@ -11,6 +13,8 @@ int attackPowerCalculator(
     @required Character enemyChar,
     @required AttackType attackType}) {
   if (attackType == AttackType.NONE) return 0;
+  if (attackType == AttackType.WEAPON_SPECIAL &&
+      weapon.specialSkillPower == null) return 0;
 
   var calculationValues =
       PowerCalculationValues(weaponFactor: 1, characterFactor: 1);
@@ -26,6 +30,13 @@ int attackPowerCalculator(
       {
         calculationValues.weaponFactor = weapon.magicPower;
         calculationValues.characterFactor = character.wisdom;
+        break;
+      }
+    case AttackType.WEAPON_SPECIAL:
+      {
+        calculationValues.weaponFactor = weapon.specialSkillPower;
+        calculationValues.characterFactor =
+            [character.wisdom, character.strength].reduce(max);
         break;
       }
     default:

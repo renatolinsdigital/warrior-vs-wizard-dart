@@ -1,3 +1,4 @@
+/* Syntax simplifier for regular attacks. Usage recommendations: In any situation that the first character attacks the second one*/
 import '../enums/game.enums.dart';
 import '../game-elements/character.class.dart';
 import '../core/game.class.dart';
@@ -9,7 +10,9 @@ Future<bool> attack(Character firstCharacter, Character secondCharacter,
       ? AttackType.PHYSICAL
       : type == 'magical'
           ? AttackType.MAGICAL
-          : AttackType.NONE;
+          : type == 'weapon_special'
+              ? AttackType.WEAPON_SPECIAL
+              : AttackType.NONE;
   await firstCharacter
       .attackWithWeapon(secondCharacter, attackType: attackType)
       .then((actionMessages) async {

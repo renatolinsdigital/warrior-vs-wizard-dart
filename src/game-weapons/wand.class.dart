@@ -1,14 +1,10 @@
+import '../../lib_packages/meta-1.2.3/lib/meta.dart';
 import '../game-elements/weapon.class.dart';
 import '../enums/game.enums.dart';
 
 class Wand extends Weapon {
   void updateElementIdentifier() {
-    elementIdentifier = '${super.elementIdentifier}_magical_wand';
-  }
-
-  @override
-  void weaponSpecialSkill() {
-    print('Wapon special skill');
+    elementIdentifier = '${super.elementIdentifier}_wand';
   }
 
   @override
@@ -17,13 +13,21 @@ class Wand extends Weapon {
   Condition: ${condition}%
   Attack power: ${attackPower}
   Magic power: ${magicPower}
-  ''');
+  Special skill: ${specialSkillName}
+  Special skill power: ${specialSkillPower}
+''');
 
-  Wand(String name, {int magicPower}) : super(name) {
+  Wand(String name,
+      {@required int magicPower,
+      int specialSkillPower = 0,
+      String specialSkillName = 'none'})
+      : super(name) {
     updateElementIdentifier();
     this.name = name;
     this.magicPower = magicPower;
     attackPower = 10;
+    this.specialSkillPower = specialSkillPower;
+    this.specialSkillName = specialSkillName;
     type = WeaponType.WAND;
   }
 }

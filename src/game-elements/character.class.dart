@@ -65,15 +65,11 @@ class Character {
     enemyChar.health = enemyHealthAfterAttack > 0 ? enemyHealthAfterAttack : 0;
 
     Game.currentActionMessages.add(
-        '\n- ${name} attacked ${enemyChar.name} with a ${attackPower} ${extractType(attackType)} hit \n');
+        '- ${name} attacked ${enemyChar.name} with a ${attackPower} ${extractType(attackType)} hit');
     if (enemyChar.health > 0) {
       updateUltimateGauge(enemyChar);
     } else {
-      Game.currentActionMessages.add('''
-  
-  ===> K.O!
-      
-      ''');
+      Game.currentActionMessages.add('''===> K.O!''');
     }
 
     return Future.delayed(
@@ -83,11 +79,11 @@ class Character {
   }
 
   String toString() => ('''
-  
+
   Character name: ${name}
   Instance id: ${instanceId}
   Identifier: ${elementIdentifier}
-  Class: ${characterClass}
+  Class: ${extractType(characterClass)}
   Level: ${level}
   Health: ${health}
   Strength: ${strength}

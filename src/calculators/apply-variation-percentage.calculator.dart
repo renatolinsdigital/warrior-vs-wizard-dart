@@ -1,3 +1,6 @@
+/*Applies some variation on base values, according to informed variation percentage. 
+Usage recommendation: Anywhere you've finished other calculations but you don't 
+want the final value to be an exact fixed value everytime, ex: attack values.*/
 import 'dart:math';
 
 int applyVariationPercentage(int baseValue, int variationPercentage) {

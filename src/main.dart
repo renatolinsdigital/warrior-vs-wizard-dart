@@ -11,11 +11,18 @@ void main() async {
   var game = Game();
   await game.run();
 
-  // generating game world stuff
-  game.addWeapon(new Sword('Brave Sword', attackPower: 120));
-  game.addWeapon(new Sword('Hero Sword', attackPower: 170));
-  game.addWeapon(new Wand('Simple Wand', magicPower: 145));
-  game.addWeapon(new Wand('Fire Wand', magicPower: 160));
+  // adding weapons to game world
+  game.addWeapon(new Sword('Simple Sword', attackPower: 120));
+
+  game.addWeapon(new Sword('Hero Sword',
+      attackPower: 170,
+      specialSkillName: 'Cutting blow',
+      specialSkillPower: 185));
+
+  game.addWeapon(new Wand('Simple Wand', magicPower: 135));
+
+  game.addWeapon(new Wand('Fire Wand',
+      magicPower: 160, specialSkillName: 'Burst', specialSkillPower: 170));
 
   await Game.writeToBattleLog(game.weaponsToString());
 
@@ -25,9 +32,11 @@ void main() async {
 
   // querying game elements for later interaction
   var firstSwordFound = game.getWeaponsByType(WeaponType.SWORD)[0];
-  // var secondSwordFound = game.getWeaponsByType(WeaponType.SWORD)[1];
+  var secondSwordFound = game.getWeaponsByType(WeaponType.SWORD)[1];
+
   var firstWandFound = game.getWeaponsByType(WeaponType.WAND)[0];
-  // var secondWandFound = game.getWeaponsByType(WeaponType.WAND)[1];
+  var secondWandFound = game.getWeaponsByType(WeaponType.WAND)[1];
+
   var warrior = game.getCharactersByClass(CharacterClass.WARRIOR)[0];
   var wizard = game.getCharactersByClass(CharacterClass.WIZARD)[0];
 
@@ -41,13 +50,21 @@ void main() async {
   await Game.writeToBattleLog(game.charactersToString());
 
   // Action start
-  await Game.writeToBattleLog('''
-
-  ======= GAME ACTION =======
-''');
+  await Game.writeToBattleLog('''======= GAME ACTION =======''');
 
   await attack(warrior, wizard, type: 'physical');
   await attack(wizard, warrior, type: 'magical');
+  await attack(warrior, wizard, type: 'physical');
+  await attack(wizard, warrior, type: 'magical');
 
-//  game.logCharacters();
+  warrior.equipWeapon(secondSwordFound);
+  await Game.writeToBattleLog(
+      '- ${warrior.name} equipped ${secondSwordFound.name}');
+
+  wizard.equipWeapon(secondWandFound);
+  await Game.writeToBattleLog(
+      '- ${wizard.name} equipped ${secondWandFound.name}');
+
+  await attack(warrior, wizard, type: 'weapon_special');
+  await attack(warrior, wizard, type: 'weapon_special');
 }
