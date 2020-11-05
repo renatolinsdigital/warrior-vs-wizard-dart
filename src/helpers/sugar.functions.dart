@@ -1,7 +1,7 @@
 /* Syntax simplifier for regular attacks. Usage recommendations: In any situation that the first character attacks the second one*/
 import '../enums/game.enums.dart';
 import '../game-elements/character.class.dart';
-import '../core/game.class.dart';
+import '../output/Log.class.dart';
 
 Future<bool> attack(Character firstCharacter, Character secondCharacter,
     {String type}) async {
@@ -17,7 +17,7 @@ Future<bool> attack(Character firstCharacter, Character secondCharacter,
       .attackWithWeapon(secondCharacter, attackType: attackType)
       .then((actionMessages) async {
     for (int i = 0; i < actionMessages.length; i++)
-      await Game.writeToBattleLog(actionMessages[i]);
+      await Log.writeToBattleLog(actionMessages[i]);
     isAttackFinished = true;
   });
 

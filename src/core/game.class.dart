@@ -5,6 +5,7 @@ import '../enums/game.enums.dart';
 import '../game-elements/weapon.class.dart';
 import '../game-elements/character.class.dart';
 import '../helpers/extractType.dart';
+import '../output/Log.class.dart';
 
 class Game {
   GameStatus status = GameStatus.STOPPED;
@@ -18,7 +19,7 @@ class Game {
 
   Future<void> run() async {
     status = GameStatus.RUNNING;
-    await Game.writeToBattleLog(toString());
+    await Log.writeToBattleLog(toString());
   }
 
   void pause() {
@@ -30,27 +31,6 @@ class Game {
     weapons = [];
     characters = [];
     status = GameStatus.STOPPED;
-  }
-
-  // Battle log
-
-  static Future<File> writeToBattleLog(String text) {
-    return batteLog.writeAsString('''
-    
-    ${text}
-    ''', mode: FileMode.append);
-  }
-
-  static Future<bool> bulkWriteToBattleLog(List<String> messageList) async {
-    for (int i = 0; i < messageList.length; i++) {
-      await batteLog.writeAsString(messageList[0].toString(),
-          mode: FileMode.append);
-    }
-
-    return Future.delayed(
-      Duration(milliseconds: 300),
-      () => true,
-    );
   }
 
   // Weapons management
@@ -120,11 +100,6 @@ class Game {
   // Constructor
 
   Game() {
-    final battleLogFileName = 'battle-log.txt';
-    final oldBattleLog = File(battleLogFileName);
-
-    if (oldBattleLog.existsSync()) oldBattleLog.deleteSync();
-
-    batteLog = File(battleLogFileName);
+    Log.createBattleLog('../battle-log.txt');
   }
 }

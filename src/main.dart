@@ -5,6 +5,7 @@ import 'game-weapons/sword.class.dart';
 import 'game-weapons/wand.class.dart';
 import 'helpers/sugar.functions.dart';
 import 'enums/game.enums.dart';
+import 'output/Log.class.dart';
 
 void main() async {
   // Game instance start
@@ -24,7 +25,7 @@ void main() async {
   game.addWeapon(new Wand('Fire Wand',
       magicPower: 160, specialSkillName: 'Burst', specialSkillPower: 170));
 
-  await Game.writeToBattleLog(game.weaponsToString());
+  await Log.writeToBattleLog(game.weaponsToString());
 
   // adding characters to game
   game.addCharacter(new Warrior('Theruk'));
@@ -47,10 +48,10 @@ void main() async {
   warrior.equipWeapon(firstSwordFound);
   wizard.equipWeapon(firstWandFound);
 
-  await Game.writeToBattleLog(game.charactersToString());
+  await Log.writeToBattleLog(game.charactersToString());
 
   // Action start
-  await Game.writeToBattleLog('''======= GAME ACTION =======''');
+  await Log.writeToBattleLog('''======= GAME ACTION =======''');
 
   await attack(warrior, wizard, type: 'physical');
   await attack(wizard, warrior, type: 'magical');
@@ -58,11 +59,11 @@ void main() async {
   await attack(wizard, warrior, type: 'magical');
 
   warrior.equipWeapon(secondSwordFound);
-  await Game.writeToBattleLog(
+  await Log.writeToBattleLog(
       '- ${warrior.name} equipped ${secondSwordFound.name}');
 
   wizard.equipWeapon(secondWandFound);
-  await Game.writeToBattleLog(
+  await Log.writeToBattleLog(
       '- ${wizard.name} equipped ${secondWandFound.name}');
 
   await attack(warrior, wizard, type: 'weapon_special');
