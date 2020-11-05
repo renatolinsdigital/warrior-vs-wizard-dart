@@ -21,9 +21,8 @@ class Warrior extends Character implements CharacterClassModel {
     wisdom = baseWisdom - warriorWisdomAdjustment.truncate();
   }
 
-  void classSpecialAttack() {
-    // has a cooldown
-    print('class special attack');
+  void classSpecialSkill() {
+    print('class special skill');
   }
 
   void unleashUltimate() {

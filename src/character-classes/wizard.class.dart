@@ -4,7 +4,7 @@ import '../models/character-class.model.dart';
 
 class Wizard extends Character implements CharacterClassModel {
   void updateElementIdentifier() {
-    elementIdentifier = '${super.elementIdentifier}_warrior';
+    elementIdentifier = '${super.elementIdentifier}_wizard';
   }
 
   @override
@@ -21,9 +21,8 @@ class Wizard extends Character implements CharacterClassModel {
     wisdom = baseWisdom + wizardWisdomAdjustment.truncate();
   }
 
-  void classSpecialAttack() {
-    // has a cooldown
-    print('class special attack');
+  void classSpecialSkill() {
+    print('class special skill');
   }
 
   void unleashUltimate() {
