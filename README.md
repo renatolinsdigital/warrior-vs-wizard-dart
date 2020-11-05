@@ -40,4 +40,4 @@ This project uses __@required__ for some named parameters. This annotation comes
 
 ## More about
 
-This is an open source project, feel free to study, implement, share, use commercially and collaborate(paypal: renato.lins.digital@gmail.com) at will.
+This is an open source project, feel free to study, implement, share, use commercially and collaborate(paypal: __renato.lins.digital@gmail.com__) at will.
