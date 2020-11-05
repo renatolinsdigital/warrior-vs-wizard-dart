@@ -25,7 +25,7 @@ In order to have a clean and organized structure, many object oriented programmi
 
 ## Features
 
-* Character (abstract class) can be extended to implement any game character class. __Warrior__ and __Wizard__ are already provided
+* Character class can be extended and implement a character´s class model, enabling the creation of any sort of fighter. __Warrior__ and __Wizard__ are already provided
 * Weapon (abstract class) can be extended to implement any game weapon. __Sword__ and __Wand__ are already provided
 * Simulates a game world, enabling the ability to hold items and global actions/events
 * Characters can have it´s level adjusted, and it will reflect statuses accordingly

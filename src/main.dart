@@ -1,6 +1,7 @@
 import 'core/game.class.dart';
 import 'character-classes/warrior.class.dart';
 import 'character-classes/wizard.class.dart';
+import 'game-elements/character.class.dart';
 import 'game-weapons/sword.class.dart';
 import 'game-weapons/wand.class.dart';
 import 'helpers/sugar.functions.dart';
