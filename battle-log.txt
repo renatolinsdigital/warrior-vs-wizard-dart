@@ -7,7 +7,7 @@
     = GAME WEAPONS =
         
   Weapon name: Simple Sword
-  Instance id: 103823240
+  Instance id: 336075813
   Identifier: weapon_sword
   Type: sword
   Condition: 100%
@@ -17,7 +17,7 @@
   Special skill power: 0
        
   Weapon name: Hero Sword
-  Instance id: 831272311
+  Instance id: 530247517
   Identifier: weapon_sword
   Type: sword
   Condition: 100%
@@ -27,7 +27,7 @@
   Special skill power: 185
        
   Weapon name: Simple Wand
-  Instance id: 837739146
+  Instance id: 267877220
   Identifier: weapon_wand
   Type: wand
   Condition: 100%
@@ -37,7 +37,7 @@
   Special skill power: 0
      
   Weapon name: Fire Wand
-  Instance id: 507926636
+  Instance id: 584243378
   Identifier: weapon_wand
   Type: wand
   Condition: 100%
@@ -50,7 +50,7 @@
     = GAME CHARACTERS =
     
   Character name: Theruk
-  Instance id: 220447025
+  Instance id: 864026897
   Identifier: character_warrior
   Class: warrior
   Level: 1
@@ -61,7 +61,7 @@
   Is Ultimate ready: No
    
   Character name: Mancid
-  Instance id: 73264792
+  Instance id: 28734560
   Identifier: character_wizard
   Class: wizard
   Level: 1
@@ -74,19 +74,19 @@
         
     ======= GAME ACTION =======
         
-    - Theruk attacked Mancid with a 32 physical hit
-        
-    - Mancid attacked Theruk with a 36 magical hit
-        
-    - Theruk attacked Mancid with a 32 physical hit
+    - Theruk attacked Mancid with a 30 physical hit
         
     - Mancid attacked Theruk with a 34 magical hit
+        
+    - Theruk attacked Mancid with a 30 physical hit
+        
+    - Mancid attacked Theruk with a 36 magical hit
         
     - Theruk equipped Hero Sword
         
     - Mancid equipped Fire Wand
         
-    - Theruk attacked Mancid with a 50 weapon special hit
-        
     - Theruk attacked Mancid with a 46 weapon special hit
+        
+    - Theruk attacked Mancid with a 50 weapon special hit
     
