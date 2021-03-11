@@ -1,4 +1,3 @@
-/* Core Game functionallities*/
 import 'dart:math';
 import 'dart:io';
 import '../enums/game.enums.dart';
@@ -95,7 +94,7 @@ class Game {
   String toString() => ('''= GAME INFO =  
 
   Status: ${extractType(status)}   
-  Winner: ${winnerName ?? 'No winners yet'}''');
+  Winner: ${winnerName ?? 'No winner yet'}''');
 
   // Constructor
 

@@ -30,9 +30,12 @@ In order to have a clean and organized structure, many object oriented programmi
 * Simulates a game world, enabling the ability to hold items and global actions/events
 * Characters can have it´s level adjusted, and it will reflect statuses accordingly
 * Allows a two characters fight until one of them can be considered the winner. A game instance with a battle example is provided
-* Special skills: Both weapons and characters can have special skills, making a great differentiation inside battles
+* Game actions can be easily registered(methods are also provided) into the [battle-log.txt](https://github.com/renatolinsdigital/warrior-vs-wizard-dart/blob/master/battle-log.txt) file(handled by Dart IO). This is where we can check battle outputs
+
+Coming soon:
+
+* Special skills: Both weapons and characters can have special skills, making battles even more fun and unpredictable
 * Ultimate: As long as the fight goes on, an ultimate gauge will be filled, enabling character´s most powerful attacks
-* Game actions can be easily registered(methods are also provided) into the [battle-log.txt](https://github.com/renatolinsdigital/warrior-vs-wizard-dart/blob/master/battle-log.txt) file(handled by Dart IO). This is where you can check this project´s outputs
 
 ## External libraries
 
